@@ -132,3 +132,20 @@ The results are stored at ``OUTPUT/odinw_log/``.
 
 If you wish to use custom vision queries or datasets, add ``'VISION_QUERY.QUERY_BANK_PATH custom_bank_path'`` to the ``--opts`` argment, and also modify the ``dataset_configs`` in the ``tools/eval_odinw.py``. 
 
+## Single-Modal Evaluation
+
+Here we provide introduction on utilizing single modal queries, such as visual exemplars or textual queries.
+
+
+Follow the command as in ``(Zero-Shot) Evaluation``. But set the following hyper-parameters.
+
+To solely use vision queries, add hyper-parameters:
+```
+VISION_QUERY.MASK_DURING_INFERENCE True TEXT_DROPOUT 1.0
+```
+
+To solely use language queries, add hyper-parameters:
+```
+VISION_QUERY.ENABLED FALSE
+```
+
