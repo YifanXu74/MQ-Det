@@ -134,7 +134,7 @@ If you wish to use custom vision queries or datasets, add ``'VISION_QUERY.QUERY_
 
 ## Single-Modal Evaluation
 
-Here we provide introduction on utilizing single modal queries, such as visual exemplars or textual queries.
+Here we provide introduction on utilizing single modal queries, such as visual exemplars or textual description.
 
 
 Follow the command as in ``(Zero-Shot) Evaluation``. But set the following hyper-parameters.
