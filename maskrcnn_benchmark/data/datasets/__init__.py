@@ -16,10 +16,10 @@ from .caption import CaptionTSV
 from .lvis import LvisDetection
 from .pseudo_data import PseudoData
 from .phrasecut import PhrasecutDetection
-# from .modulated_coco_new import CocoGrounding_New
+from .modulated_coco_new import CocoGrounding_New
 
 __all__ = ["COCODataset", "TSVDataset", "ODTSVDataset", "ConcatDataset", "PascalVOCDataset", "Background",
            "ModulatedDataset", "MixedDataset", "CocoDetection", "FlickrDataset", "RefExpDataset", "GQADataset",
            "CocoDetectionTSV", "CocoGrounding", "CaptionTSV", "LvisDetection", "PseudoData", "PhrasecutDetection",
-        #    "CocoGrounding_New"
+           "CocoGrounding_New",
            ]
