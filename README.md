@@ -31,7 +31,7 @@ MQ-Det incorporates vision queries into existing well-established language-queri
 **Environment** This repo requires Pytorch==1.9  and torchvision. 
 Init the  environment:
 ```
-./init.sh
+bash init.sh
 ```
 
 **Initial weight** MQ-Det is build upon frozen language-queried detector. To conduct modulated pre-training, download corresponding pre-trained model weights first.
