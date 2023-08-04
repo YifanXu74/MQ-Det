@@ -141,7 +141,7 @@ Follow the command as in ``(Zero-Shot) Evaluation``. But set the following hyper
 
 To solely use vision queries, add hyper-parameters:
 ```
-VISION_QUERY.MASK_DURING_INFERENCE True TEXT_DROPOUT 1.0
+VISION_QUERY.MASK_DURING_INFERENCE True VISION_QUERY.TEXT_DROPOUT 1.0
 ```
 
 To solely use language queries, add hyper-parameters:
