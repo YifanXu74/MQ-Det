@@ -1,0 +1,13 @@
+build/
+__pycache__/
+DATASET/
+MODEL/
+OUTPUT/
+.vscode/
+*.egg-info/
+*gnu.so
+logs/
+odinw-img-logs/
+other_log/
+vs_downstream_log/
+vs_final_downstream_log/

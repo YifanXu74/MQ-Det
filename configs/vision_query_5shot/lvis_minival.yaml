@@ -1,0 +1,73 @@
+MODEL:
+  BACKBONE:
+    FREEZE_CONV_BODY_AT: -1
+  ATSS:
+    NUM_CLASSES: 8 # these fields are not used; just a placeholder
+    DETECTIONS_PER_IMG: 300
+  FCOS:
+    NUM_CLASSES: 8
+    DETECTIONS_PER_IMG: 300
+  ROI_BOX_HEAD:
+    NUM_CLASSES: 8
+  DYHEAD:
+    NUM_CLASSES: 8
+  RETINANET:
+    DETECTIONS_PER_IMG: 300
+  ROI_HEADS:
+    DETECTIONS_PER_IMG: 300
+  DYHEAD:
+    NUM_CLASSES: 1204
+
+DATASETS:
+  REGISTER:
+    lvis_evaluation_mini_val:
+      img_dir: "coco"
+      ann_file: "coco/annotations/lvis_v1_minival_inserted_image_name.json"
+    lvis_evaluation_val:
+      img_dir: "coco"
+      ann_file: "coco/annotations/lvis_od_val.json"
+  TRAIN: ("lvis_grounding_train_for_obj365", )
+  TEST: ("lvis_evaluation_mini_val",)
+  USE_OVERRIDE_CATEGORY: True
+  DISABLE_SHUFFLE: False
+  FEW_SHOT: 5
+
+SOLVER:
+  STEPS: (0.67, 0.89)
+  BASE_LR: 0.00001
+  LANG_LR: 0.00001
+  GATE_LR: 0.0001
+  QUERY_LR: 0.00001
+  WEIGHT_DECAY: 0.05
+  WARMUP_ITERS: 20
+  USE_AUTOSTEP: True
+
+  TEST_WITH_INFERENCE: True
+
+  CHECKPOINT_PERIOD: 99999999
+  CHECKPOINT_PER_EPOCH: -1.0
+
+INPUT:
+  MIN_SIZE_TRAIN: 800
+  MAX_SIZE_TRAIN: 1333
+  MIN_SIZE_TEST: 800
+  MAX_SIZE_TEST: 1333
+DATALOADER:
+  SIZE_DIVISIBILITY: 32
+  ASPECT_RATIO_GROUPING: False
+TEST:
+  IMS_PER_BATCH: 1
+  CHUNKED_EVALUATION: 40
+  MDETR_STYLE_AGGREGATE_CLASS_NUM: 3000
+  DURING_TRAINING: False
+  EVAL_TASK: detection
+
+VISION_QUERY:
+  QUERY_BANK_PATH: 'MODEL/lvis_query_5_pool7_sel.pth'
+  VISION_SCALE: 1.0
+  PURE_TEXT_RATE: 0.
+  TEXT_DROPOUT: 0.
+  NUM_QUERY_PER_CLASS: 5
+  RANDOM_KSHOT: False
+
+
