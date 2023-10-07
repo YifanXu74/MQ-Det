@@ -1,5 +1,5 @@
 # Delete some ununsed functions from modulated_coco.
-# Suit for object365 pre-training
+# Suitable for object365 pre-training
 import logging
 import os
 import os.path

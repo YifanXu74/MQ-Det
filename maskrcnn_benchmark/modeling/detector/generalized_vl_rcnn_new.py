@@ -1,4 +1,5 @@
-# Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved.
+# Adapted from https://github.com/microsoft/GLIP. The original liscense is:
+#   Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved.
 """
 Implements the Generalized VL R-CNN framework
 """
