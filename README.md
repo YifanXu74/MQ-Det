@@ -3,6 +3,8 @@
 
 Official PyTorch implementation of "[MQ-Det: Multi-modal Queried Object Detection in the Wild](https://arxiv.org/abs/2305.18980)": the first multi-modal queried open-set object detector.
 
+If you have any questions, please feel free to raise an issue or email <yifan.xu@nlpr.ia.ac.cn>.
+
 ## Citation
 
 If you find our work useful in your research, please consider citing:
