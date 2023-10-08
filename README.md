@@ -1,7 +1,7 @@
-# MQ-Det: Multi-modal Queried Object Detection in the Wild (NeurIPS 2023)
+# Multi-modal Queried Object Detection in the Wild (NeurIPS 2023)
 <!-- <img src=".asset/method.png" width="800">  -->
 
-Official PyTorch implementation of "[MQ-Det: Multi-modal Queried Object Detection in the Wild](https://arxiv.org/abs/2305.18980)": the first multi-modal queried open-set object detector.
+Official PyTorch implementation of "[Multi-modal Queried Object Detection in the Wild](https://arxiv.org/abs/2305.18980)": the first multi-modal queried open-set object detector.
 
 If you have any questions, please feel free to raise an issue or email <yifan.xu@nlpr.ia.ac.cn>.
 
