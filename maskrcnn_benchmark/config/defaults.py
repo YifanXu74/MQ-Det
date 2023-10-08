@@ -893,30 +893,31 @@ _C.GLIPKNOW.LAN_FEATURE_AGG_TYPE = "first"
 _C.GLIPKNOW.GPT3_NUM = 5
 _C.GLIPKNOW.WIKI_AND_GPT3 = False
 
-# settings of vision query
+# ---------------------------------------------------------------------------- #
+# Vision query options
+# ---------------------------------------------------------------------------- #
 _C.VISION_QUERY = CN()
-# expand bbox for better retrival
-_C.VISION_QUERY.ENABLED = False
-_C.VISION_QUERY.EXPAND_RATIO = 1.5
-# _C.VISION_QUERY.NUM_TOKENS_PER_INSTANCE = 4
+
+_C.VISION_QUERY.ENABLED = False # if set False, the model is equal to GLIP
+_C.VISION_QUERY.EXPAND_RATIO = 1.5 # expand the bbox before cropped as a vision query during query extraction
 _C.VISION_QUERY.DATASET_NAME = ""
-_C.VISION_QUERY.MAX_QUERY_NUMBER = 5000
+_C.VISION_QUERY.MAX_QUERY_NUMBER = 5000 # max per-category number of the query bank (used before training)
 _C.VISION_QUERY.MAX_TEST_QUERY_NUMBER = 100 # for test-time online update
 _C.VISION_QUERY.SELECT_FPN_LEVEL = True
-_C.VISION_QUERY.QUERY_BANK_PATH = ""
-_C.VISION_QUERY.PURE_TEXT_RATE = 0.
-_C.VISION_QUERY.NUM_QUERY_PER_CLASS = 5
-_C.VISION_QUERY.SHARE_KV = False
-_C.VISION_QUERY.TEXT_DROPOUT = 0.
-_C.VISION_QUERY.NEW_MASK_TOKEN = False
-_C.VISION_QUERY.MASK_DURING_INFERENCE = False
+_C.VISION_QUERY.QUERY_BANK_PATH = "" # path to a extracted query bank
+_C.VISION_QUERY.PURE_TEXT_RATE = 0. # probability to pass a pure text description without any vision queries for a category
+_C.VISION_QUERY.NUM_QUERY_PER_CLASS = 5 # per-category query number for each forward process (used during training)
+_C.VISION_QUERY.SHARE_KV = False # only for efficiency
+_C.VISION_QUERY.TEXT_DROPOUT = 0. # probability to mask a input category text - the core of vision conditioned masked language prediction
+_C.VISION_QUERY.NEW_MASK_TOKEN = False # using a newly initialized mask token rather than the [MASK] token in BERT to mask a word
+_C.VISION_QUERY.MASK_DURING_INFERENCE = False # mask word during inference. Only used during single modality evaluation, e.g., only vision queries
 _C.VISION_QUERY.GATE_REGULARIZATION = False
 _C.VISION_QUERY.GATE_REGULARIZATION_SCALE = 0.1
 _C.VISION_QUERY.FIX_ATTN_GATE = -1.0
 _C.VISION_QUERY.VISION_SCALE = 1.0
-_C.VISION_QUERY.RANDOM_KSHOT = False
-_C.VISION_QUERY.LEARNABLE_BANK = False
-_C.VISION_QUERY.CONDITION_GATE = False
+_C.VISION_QUERY.RANDOM_KSHOT = False # randomly select number of shot during modulated pretraining
+_C.VISION_QUERY.LEARNABLE_BANK = False # make the extacted query bank learnable, can be used during  k-shot finetuning
+_C.VISION_QUERY.CONDITION_GATE = False # the models in the paper all set this param to True to enable conditional gates.
 _C.VISION_QUERY.ADD_VISION_LAYER = False
 _C.VISION_QUERY.DISABLE_SELECTOR = False # for extract queries
 _C.VISION_QUERY.ADD_ADAPT_LAYER = False
@@ -925,8 +926,7 @@ _C.VISION_QUERY.NONLINEAR_GATE = False
 _C.VISION_QUERY.SCORE_THRESHOLD = 0.6 # To filter trustable instances for test-time online update
 _C.VISION_QUERY.SIMILARITY_THRESHOLD = 0.85 # If exclude_similar == True in extract queries, remove features that similar with banks
 _C.VISION_QUERY.NUM_TURNS = 1 # number of turns to extract test queries
-_C.VISION_QUERY.SAVE_ON_CEPH = False # TODO: remove when open source
-_C.VISION_QUERY.NO_CAT = False # TODO: remove in formal version
+_C.VISION_QUERY.NO_CAT = True # only for debug
 _C.VISION_QUERY.QUERY_ADDITION_NAME = ""
 _C.VISION_QUERY.OFFLINE_WITH_ONLINE = False
 _C.VISION_QUERY.AUGMENT_IMAGE_WITH_QUERY = False
@@ -934,10 +934,13 @@ _C.VISION_QUERY.CUSTOM_DATA_IDS = None # only for extract user-oriented vision q
 _C.VISION_QUERY.CUSTOM_CAT_IDS = None # only for custom evaluation
 _C.VISION_QUERY.QUERY_BANK_SAVE_PATH = ''
 _C.VISION_QUERY.RETURN_ATTN_GATE_VALUE = False
-_C.VISION_QUERY.DEBUG = False
-_C.VISION_QUERY.OWLVIT = False # debug
+_C.VISION_QUERY.DEBUG = False # only for debug
+_C.VISION_QUERY.OWLVIT = False # only for debug
 
+
+# ---------------------------------------------------------------------------- #
 # GroundingDINO
+# ---------------------------------------------------------------------------- #
 _C.GROUNDINGDINO = CN()
 _C.GROUNDINGDINO.enabled = False
 _C.GROUNDINGDINO.modelname = "groundingdino"

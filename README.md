@@ -125,23 +125,36 @@ This will generate query bank files for each dataset in ODinW in  ``MODEL/{datas
 
 ### Some paramters corresponding to the query extraction:
 
+The above [script](tools/extract_vision_query.py) has already set all paramters well. One only needs to pass:
+
+``--config_file`` is the pretraining config files.
+
+``--dataset`` contains some pre-defined datasets including ``objects365``, ``lvis``, ``odinw-13``, and ``odinw-35``.
+
+``--num_vision_queries`` controls the number of vision queries for each category you want to extract from the training dataset, and can be an arbitrary number. This will set both ``VISION_QUERY.MAX_QUERY_NUMBER`` and ``DATASETS.FEW_SHOT`` to ``num_vision_queries``.
+Note that here ``DATASETS.FEW_SHOT`` is only for accelerating the extraction process.
+
+``--add_name`` is only a mark for different models.
+For training/evaluating with MQ-GLIP-T/MQ-GLIP-L/MQ-GroundingDINO, we set ``--add_name`` to 'tiny'/'large'/'gd'.
+
+For customized usage, one can modify the commands in the [script](tools/extract_vision_query.py), or pass additional parameters through ``--opt``, for example,
+```
+python tools/extract_vision_query.py --config_file configs/pretrain/mq-glip-t.yaml --dataset lvis --opt 'VISION_QUERY.MAX_QUERY_NUMBER 50 DATASETS.FEW_SHOT 50'
+```
+
+Here are several parameters may be used during query extraction, more details can be found in the [code](maskrcnn_benchmark/config/defaults.py):
+
 ``DATASETS.FEW_SHOT``: if set ``k>0``, the dataset will be subsampled to k-shot for each category when initializing the dataset. This is completed before training. Not used during pre-training.
 
-``VISION_QUERY.MAX_QUERY_NUMBER``: the max number of vision queries for each category when extracting the query bank. Note that the query extraction is conducted before training and evaluation.
+``VISION_QUERY.MAX_QUERY_NUMBER``: the max number of vision queries for each category when extracting the query bank. Only used during query extraction. Note that the query extraction is conducted before training and evaluation.
 
-``VISION_QUERY.NUM_QUERY_PER_CLASS`` controls how many queries to provide for each category during one forward process in training and evaluation.
+``VISION_QUERY.NUM_QUERY_PER_CLASS`` controls how many queries to provide for each category during one forward process in training and evaluation. Not used during query extraction.
 
 Usually, we set 
 
 ``VISION_QUERY.MAX_QUERY_NUMBER=5000``, ``VISION_QUERY.NUM_QUERY_PER_CLASS=5``, ``DATASETS.FEW_SHOT=0`` during pre-training. 
 
-``VISION_QUERY.MAX_QUERY_NUMBER=5``, ``VISION_QUERY.NUM_QUERY_PER_CLASS=5``, ``DATASETS.FEW_SHOT=5`` during few-shot (5-shot) fine-tuning.
-
-``--num_vision_queries`` denotes number of vision queries for each category, and can be an arbitrary number. This will set both ``VISION_QUERY.MAX_QUERY_NUMBER`` and ``DATASETS.FEW_SHOT`` to ``num_vision_queries``.
-Note that here ``DATASETS.FEW_SHOT`` is only for accelerating the extraction process.
-
-``--add_name`` is only a mark for different models.
-For training/evaluating with MQ-GLIP-T/MQ-GLIP-L/MQ-GroundingDINO, we set ``--add_name`` to 'tiny'/'large'/'gd'.
+``VISION_QUERY.MAX_QUERY_NUMBER=k``, ``VISION_QUERY.NUM_QUERY_PER_CLASS=k``, ``DATASETS.FEW_SHOT=k`` during few-shot (k-shot) fine-tuning.
 
 ## Modulated Training
 
