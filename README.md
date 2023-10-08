@@ -248,5 +248,5 @@ python tools/eval_odinw.py --config_file configs/pretrain/mq-glip-t.yaml \
 --opts 'MODEL.WEIGHT ${model_weight_path} VISION_QUERY.MASK_DURING_INFERENCE True VISION_QUERY.TEXT_DROPOUT 1.0' \
 --setting finetuning-free \
 --add_name tiny \
---log_path 'OUTPUT/odinw_log/'
+--log_path 'OUTPUT/odinw_vision_log/'
 ```
