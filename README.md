@@ -1,4 +1,4 @@
-# Multi-modal Queried Object Detection in the Wild (NeurIPS 2023)
+# Multi-modal Queried Object Detection in the Wild
 
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/multi-modal-queried-object-detection-in-the/zero-shot-object-detection-on-lvis-v1-0)](https://paperswithcode.com/sota/zero-shot-object-detection-on-lvis-v1-0?p=multi-modal-queried-object-detection-in-the)
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/multi-modal-queried-object-detection-in-the/zero-shot-object-detection-on-lvis-v1-0-val)](https://paperswithcode.com/sota/zero-shot-object-detection-on-lvis-v1-0-val?p=multi-modal-queried-object-detection-in-the)
