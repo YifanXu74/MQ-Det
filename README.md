@@ -9,14 +9,14 @@
 
 Official code and models for the NeurIPS 2023 paper:
 
-[Multi-modal Queried Object Detection in the Wild](https://arxiv.org/abs/2305.18980) : the first multi-modal queried open-set object detector.
+[**Multi-modal Queried Object Detection in the Wild**](https://arxiv.org/abs/2305.18980)
 
 Yifan Xu, Mengdan Zhang, Chaoyou Fu, Peixian Chen, Xiaoshan Yang, Ke Li, Changsheng Xu
 
 NeurIPS 2023
 
 
-If you have any questions, please feel free to raise an issue or email <yifan.xu@nlpr.ia.ac.cn>.
+MQ-Det is the first multi-modal queried open-world object detector. If you have any questions, please feel free to raise an issue or email <yifan.xu@nlpr.ia.ac.cn>.
 
 ## Citation
 
