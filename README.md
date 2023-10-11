@@ -7,15 +7,14 @@
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/multi-modal-queried-object-detection-in-the/few-shot-object-detection-on-odinw-35)](https://paperswithcode.com/sota/few-shot-object-detection-on-odinw-35?p=multi-modal-queried-object-detection-in-the)
 
 
-[Paper](https://arxiv.org/abs/2305.18980)
-
 Official code and models for the NeurIPS 2023 paper:
 
-[Multi-modal Queried Object Detection in the Wild](https://arxiv.org/abs/2305.18980) 
+[Multi-modal Queried Object Detection in the Wild](https://arxiv.org/abs/2305.18980) : the first multi-modal queried open-set object detector.
+
 Yifan Xu, Mengdan Zhang, Chaoyou Fu, Peixian Chen, Xiaoshan Yang, Ke Li, Changsheng Xu
+
 NeurIPS 2023
 
-MQ-Det is the first multi-modal queried open-set object detector.
 
 If you have any questions, please feel free to raise an issue or email <yifan.xu@nlpr.ia.ac.cn>.
 
