@@ -97,7 +97,7 @@ if __name__ == "__main__":
                 query_bank_path = 'MODEL/{}_query_5_pool7_sel_{}.pth'.format(dataset_name, args.add_name)
             log_save_path = str(Path(args.log_path, '{}-{}-finetuning-free.txt'.format(dataset_name, args.add_name)))
 
-            cmd = '{} tools/test_grounding_net.py --config-file {} --task_config {} --additional_model_config configs/vision_query_5shot/odinw.yaml VISION_QUERY.NUM_QUERY_PER_CLASS 100 VISION_QUERY.QUERY_BANK_PATH {} TEST.IMS_PER_BATCH 1 {} > {}'\
+            cmd = '{} tools/test_grounding_net.py --config-file {} --task_config {} --additional_model_config configs/vision_query_5shot/odinw.yaml VISION_QUERY.NUM_QUERY_PER_CLASS 100 VISION_QUERY.QUERY_BANK_PATH {} TEST.IMS_PER_BATCH 1 {} | tee -a {}'\
                 .format(
                     args.python,
                     args.config_file,
@@ -112,7 +112,7 @@ if __name__ == "__main__":
         for dataset_name ,task_config in dataset_configs.items():
             query_bank_path = ''
             log_save_path = str(Path(args.log_path, '{}-{}-1-shot.txt'.format(dataset_name, args.add_name)))
-            cmd = '{} -m torch.distributed.launch --nproc_per_node=4 tools/finetune.py  --config-file {} --ft-tasks {} --additional_model_config configs/vision_query_5shot/odinw.yaml --skip-test --custom_shot_and_epoch_and_general_copy 1_200_8 --evaluate_only_best_on_test --push_both_val_and_test SOLVER.WEIGHT_DECAY 0.25 SOLVER.BASE_LR 0.05 SOLVER.TUNING_HIGHLEVEL_OVERRIDE vision_query_v3 VISION_QUERY.TEXT_DROPOUT 0.4 VISION_QUERY.NUM_QUERY_PER_CLASS 1 VISION_QUERY.MAX_QUERY_NUMBER 1 DATASETS.FEW_SHOT 1 TEST.IMS_PER_BATCH 4 SOLVER.IMS_PER_BATCH 4 {} VISION_QUERY.DATASET_NAME {} > {}'\
+            cmd = '{} -m torch.distributed.launch --nproc_per_node=4 tools/finetune.py  --config-file {} --ft-tasks {} --additional_model_config configs/vision_query_5shot/odinw.yaml --skip-test --custom_shot_and_epoch_and_general_copy 1_200_8 --evaluate_only_best_on_test --push_both_val_and_test SOLVER.WEIGHT_DECAY 0.25 SOLVER.BASE_LR 0.05 SOLVER.TUNING_HIGHLEVEL_OVERRIDE vision_query_v3 VISION_QUERY.TEXT_DROPOUT 0.4 VISION_QUERY.NUM_QUERY_PER_CLASS 1 VISION_QUERY.MAX_QUERY_NUMBER 1 DATASETS.FEW_SHOT 1 TEST.IMS_PER_BATCH 4 SOLVER.IMS_PER_BATCH 4 {} VISION_QUERY.DATASET_NAME {} | tee -a {}'\
                 .format(args.python ,args.config_file, task_config, args.opts, \
                         dataset_name,\
                         log_save_path
@@ -123,7 +123,7 @@ if __name__ == "__main__":
         for dataset_name ,task_config in dataset_configs.items():
             query_bank_path = ''
             log_save_path = str(Path(args.log_path, '{}-{}-3-shot.txt'.format(dataset_name, args.add_name)))
-            cmd = '{} -m torch.distributed.launch --nproc_per_node=4 tools/finetune.py  --config-file {} --ft-tasks {} --additional_model_config configs/vision_query_5shot/odinw.yaml --skip-test --custom_shot_and_epoch_and_general_copy 3_200_4 --evaluate_only_best_on_test --push_both_val_and_test SOLVER.WEIGHT_DECAY 0.25 SOLVER.BASE_LR 0.05 SOLVER.TUNING_HIGHLEVEL_OVERRIDE vision_query_v3 VISION_QUERY.TEXT_DROPOUT 0.4 VISION_QUERY.NUM_QUERY_PER_CLASS 3 VISION_QUERY.MAX_QUERY_NUMBER 3 DATASETS.FEW_SHOT 3 TEST.IMS_PER_BATCH 4 SOLVER.IMS_PER_BATCH 4 {} VISION_QUERY.DATASET_NAME {} > {}.txt'\
+            cmd = '{} -m torch.distributed.launch --nproc_per_node=4 tools/finetune.py  --config-file {} --ft-tasks {} --additional_model_config configs/vision_query_5shot/odinw.yaml --skip-test --custom_shot_and_epoch_and_general_copy 3_200_4 --evaluate_only_best_on_test --push_both_val_and_test SOLVER.WEIGHT_DECAY 0.25 SOLVER.BASE_LR 0.05 SOLVER.TUNING_HIGHLEVEL_OVERRIDE vision_query_v3 VISION_QUERY.TEXT_DROPOUT 0.4 VISION_QUERY.NUM_QUERY_PER_CLASS 3 VISION_QUERY.MAX_QUERY_NUMBER 3 DATASETS.FEW_SHOT 3 TEST.IMS_PER_BATCH 4 SOLVER.IMS_PER_BATCH 4 {} VISION_QUERY.DATASET_NAME {} | tee -a {}.txt'\
                 .format(args.python ,args.config_file, task_config, args.opts, \
                         dataset_name,\
                         log_save_path, 
@@ -134,7 +134,7 @@ if __name__ == "__main__":
         for dataset_name ,task_config in dataset_configs.items():
             query_bank_path = ''
             log_save_path = str(Path(args.log_path, '{}-{}-5-shot.txt'.format(dataset_name, args.add_name)))
-            cmd = '{} -m torch.distributed.launch --nproc_per_node=4 tools/finetune.py  --config-file {} --ft-tasks {} --additional_model_config configs/vision_query_5shot/odinw.yaml --skip-test --custom_shot_and_epoch_and_general_copy 5_200_2 --evaluate_only_best_on_test --push_both_val_and_test SOLVER.WEIGHT_DECAY 0.25 SOLVER.BASE_LR 0.05 SOLVER.TUNING_HIGHLEVEL_OVERRIDE vision_query_v3 VISION_QUERY.TEXT_DROPOUT 0.4 TEST.IMS_PER_BATCH 4 SOLVER.IMS_PER_BATCH 4 {} VISION_QUERY.DATASET_NAME {} > {}'\
+            cmd = '{} -m torch.distributed.launch --nproc_per_node=4 tools/finetune.py  --config-file {} --ft-tasks {} --additional_model_config configs/vision_query_5shot/odinw.yaml --skip-test --custom_shot_and_epoch_and_general_copy 5_200_2 --evaluate_only_best_on_test --push_both_val_and_test SOLVER.WEIGHT_DECAY 0.25 SOLVER.BASE_LR 0.05 SOLVER.TUNING_HIGHLEVEL_OVERRIDE vision_query_v3 VISION_QUERY.TEXT_DROPOUT 0.4 TEST.IMS_PER_BATCH 4 SOLVER.IMS_PER_BATCH 4 {} VISION_QUERY.DATASET_NAME {} | tee -a {}'\
                 .format(args.python ,args.config_file, task_config, args.opts, \
                         dataset_name,\
                         log_save_path
@@ -145,7 +145,7 @@ if __name__ == "__main__":
         for dataset_name ,task_config in dataset_configs.items():
             query_bank_path = ''
             log_save_path = str(Path(args.log_path, '{}-{}-10-shot.txt'.format(dataset_name, args.add_name)))
-            cmd = '{} -m torch.distributed.launch --nproc_per_node=4 tools/finetune.py  --config-file {} --ft-tasks {} --additional_model_config configs/vision_query_5shot/odinw.yaml --skip-test --custom_shot_and_epoch_and_general_copy 10_200_1 --evaluate_only_best_on_test --push_both_val_and_test SOLVER.WEIGHT_DECAY 0.25 SOLVER.BASE_LR 0.05 SOLVER.TUNING_HIGHLEVEL_OVERRIDE vision_query_v3 VISION_QUERY.TEXT_DROPOUT 0.4 VISION_QUERY.NUM_QUERY_PER_CLASS 10 VISION_QUERY.MAX_QUERY_NUMBER 10 DATASETS.FEW_SHOT 10 TEST.IMS_PER_BATCH 4 SOLVER.IMS_PER_BATCH 4 {} VISION_QUERY.DATASET_NAME {} > {}'\
+            cmd = '{} -m torch.distributed.launch --nproc_per_node=4 tools/finetune.py  --config-file {} --ft-tasks {} --additional_model_config configs/vision_query_5shot/odinw.yaml --skip-test --custom_shot_and_epoch_and_general_copy 10_200_1 --evaluate_only_best_on_test --push_both_val_and_test SOLVER.WEIGHT_DECAY 0.25 SOLVER.BASE_LR 0.05 SOLVER.TUNING_HIGHLEVEL_OVERRIDE vision_query_v3 VISION_QUERY.TEXT_DROPOUT 0.4 VISION_QUERY.NUM_QUERY_PER_CLASS 10 VISION_QUERY.MAX_QUERY_NUMBER 10 DATASETS.FEW_SHOT 10 TEST.IMS_PER_BATCH 4 SOLVER.IMS_PER_BATCH 4 {} VISION_QUERY.DATASET_NAME {} | tee -a {}'\
                 .format(args.python ,args.config_file, task_config, args.opts, \
                         dataset_name,\
                         log_save_path
@@ -156,7 +156,7 @@ if __name__ == "__main__":
         for dataset_name ,task_config in dataset_configs.items():
             query_bank_path = ''
             log_save_path = str(Path(args.log_path, '{}-{}-50-shot.txt'.format(dataset_name, args.add_name)))
-            cmd = '{} -m torch.distributed.launch --nproc_per_node=8 tools/finetune.py  --config-file {} --ft-tasks {} --additional_model_config configs/vision_query_5shot/odinw.yaml --skip-test --custom_shot_and_epoch_and_general_copy 50_200_1 --evaluate_only_best_on_test --push_both_val_and_test SOLVER.WEIGHT_DECAY 0.25 SOLVER.BASE_LR 0.05 SOLVER.TUNING_HIGHLEVEL_OVERRIDE vision_query_v3 VISION_QUERY.TEXT_DROPOUT 0.4 VISION_QUERY.NUM_QUERY_PER_CLASS 50 VISION_QUERY.MAX_QUERY_NUMBER 50 DATASETS.FEW_SHOT 50 TEST.IMS_PER_BATCH 8 SOLVER.IMS_PER_BATCH 8 DATALOADER.NUM_WORKERS 0 {} VISION_QUERY.DATASET_NAME {} | tee {}'\
+            cmd = '{} -m torch.distributed.launch --nproc_per_node=8 tools/finetune.py  --config-file {} --ft-tasks {} --additional_model_config configs/vision_query_5shot/odinw.yaml --skip-test --custom_shot_and_epoch_and_general_copy 50_200_1 --evaluate_only_best_on_test --push_both_val_and_test SOLVER.WEIGHT_DECAY 0.25 SOLVER.BASE_LR 0.05 SOLVER.TUNING_HIGHLEVEL_OVERRIDE vision_query_v3 VISION_QUERY.TEXT_DROPOUT 0.4 VISION_QUERY.NUM_QUERY_PER_CLASS 50 VISION_QUERY.MAX_QUERY_NUMBER 50 DATASETS.FEW_SHOT 50 TEST.IMS_PER_BATCH 8 SOLVER.IMS_PER_BATCH 8 DATALOADER.NUM_WORKERS 0 {} VISION_QUERY.DATASET_NAME {} | tee -a {}'\
                 .format(args.python ,args.config_file, task_config, args.opts, \
                         dataset_name,\
                         log_save_path
@@ -167,7 +167,7 @@ if __name__ == "__main__":
         for dataset_name ,task_config in dataset_configs.items():
             query_bank_path = ''
             log_save_path = str(Path(args.log_path, '{}-{}-full-shot.txt'.format(dataset_name, args.add_name)))
-            cmd = '{} -m torch.distributed.launch --nproc_per_node=4 tools/finetune.py  --config-file {} --ft-tasks {} --additional_model_config configs/vision_query_5shot/odinw.yaml --skip-test --custom_shot_and_epoch_and_general_copy 0_200_1 --evaluate_only_best_on_test --push_both_val_and_test SOLVER.WEIGHT_DECAY 0.25 SOLVER.BASE_LR 0.05 SOLVER.STEP_PATIENCE 2 SOLVER.AUTO_TERMINATE_PATIENCE 4 SOLVER.TUNING_HIGHLEVEL_OVERRIDE vision_query_v3 VISION_QUERY.TEXT_DROPOUT 0.4 VISION_QUERY.NUM_QUERY_PER_CLASS 100 VISION_QUERY.MAX_QUERY_NUMBER 100 DATASETS.FEW_SHOT 0 TEST.IMS_PER_BATCH 4 SOLVER.IMS_PER_BATCH 4 {} VISION_QUERY.DATASET_NAME {} > {}'\
+            cmd = '{} -m torch.distributed.launch --nproc_per_node=4 tools/finetune.py  --config-file {} --ft-tasks {} --additional_model_config configs/vision_query_5shot/odinw.yaml --skip-test --custom_shot_and_epoch_and_general_copy 0_200_1 --evaluate_only_best_on_test --push_both_val_and_test SOLVER.WEIGHT_DECAY 0.25 SOLVER.BASE_LR 0.05 SOLVER.STEP_PATIENCE 2 SOLVER.AUTO_TERMINATE_PATIENCE 4 SOLVER.TUNING_HIGHLEVEL_OVERRIDE vision_query_v3 VISION_QUERY.TEXT_DROPOUT 0.4 VISION_QUERY.NUM_QUERY_PER_CLASS 100 VISION_QUERY.MAX_QUERY_NUMBER 100 DATASETS.FEW_SHOT 0 TEST.IMS_PER_BATCH 4 SOLVER.IMS_PER_BATCH 4 {} VISION_QUERY.DATASET_NAME {} | tee -a {}'\
                 .format(args.python ,args.config_file, task_config, args.opts, \
                         dataset_name,\
                         log_save_path
