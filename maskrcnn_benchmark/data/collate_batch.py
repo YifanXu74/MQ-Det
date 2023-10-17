@@ -66,7 +66,7 @@ class BatchCollator(object):
             positive_map_eval = batched_pos_map.float()
 
 
-        return images, targets, img_ids, positive_map, positive_map_eval, greenlight_map, path # debug: delete path
+        return images, targets, img_ids, positive_map, positive_map_eval, greenlight_map
 
 
 class BBoxAugCollator(object):
