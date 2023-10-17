@@ -126,7 +126,7 @@ if __name__ == "__main__":
             cmd = '{} -m torch.distributed.launch --nproc_per_node=4 tools/finetune.py  --config-file {} --ft-tasks {} --additional_model_config configs/vision_query_5shot/odinw.yaml --skip-test --custom_shot_and_epoch_and_general_copy 3_200_4 --evaluate_only_best_on_test --push_both_val_and_test SOLVER.WEIGHT_DECAY 0.25 SOLVER.BASE_LR 0.05 SOLVER.TUNING_HIGHLEVEL_OVERRIDE vision_query_v3 VISION_QUERY.TEXT_DROPOUT 0.4 VISION_QUERY.NUM_QUERY_PER_CLASS 3 VISION_QUERY.MAX_QUERY_NUMBER 3 DATASETS.FEW_SHOT 3 TEST.IMS_PER_BATCH 4 SOLVER.IMS_PER_BATCH 4 {} VISION_QUERY.DATASET_NAME {} > {}.txt'\
                 .format(args.python ,args.config_file, task_config, args.opts, \
                         dataset_name,\
-                        'vs_downstream_log/{}-{}-3-shot-vsfull_v3-o-mask'.format(dataset_name, args.add_name) if args.opts else 'vs_downstream_log/glip-{}-{}-5-shot-vsfull_v3-o-mask'.format(dataset_name, args.add_name), 
+                        log_save_path, 
                         )
             os.system(cmd)
 
