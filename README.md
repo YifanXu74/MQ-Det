@@ -215,7 +215,7 @@ python tools/eval_odinw.py --config_file configs/pretrain/mq-glip-t.yaml \
 ```
 The results are stored at ``OUTPUT/odinw_log/``.
 
-If you wish to use custom vision queries or datasets, specify ``--task_config`` and ``--custom_bank_path``. The ``task_config`` should be like the ones in [ODinW configs](configs/odinw_13/AerialMaritimeDrone_large.yaml), and make sure ``DATASETS.TRAIN_DATASETNAME_SUFFIX`` is "_vision_query" to enable the [dataset](https://github.com/YifanXu74/MQ-Det/blob/ea3c2b8dedd2b3fba633a1dc65a0a6a8c84cba21/maskrcnn_benchmark/data/datasets/modulated_coco_new.py#L32C5-L32C5) with vision queries.  The ``custom_bank_path`` should be extracted following the [instruction](#vision-query-extraction). For example,
+If you wish to use custom vision queries or datasets, specify ``--task_config`` and ``--custom_bank_path``. The ``task_config`` should be like the ones in [ODinW configs](configs/odinw_13/AerialMaritimeDrone_large.yaml), and make sure ``DATASETS.TRAIN_DATASETNAME_SUFFIX`` to be "_vision_query" to enable the [dataset](https://github.com/YifanXu74/MQ-Det/blob/ea3c2b8dedd2b3fba633a1dc65a0a6a8c84cba21/maskrcnn_benchmark/data/datasets/modulated_coco_new.py#L32C5-L32C5) with vision queries.  The ``custom_bank_path`` should be extracted following the [instruction](#vision-query-extraction). For example,
 ```
 python tools/eval_odinw.py --config_file configs/pretrain/mq-glip-t.yaml \
 --opts 'MODEL.WEIGHT ${model_weight_path}' \
