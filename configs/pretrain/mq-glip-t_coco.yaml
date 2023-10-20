@@ -1,0 +1,141 @@
+MODEL:
+  META_ARCHITECTURE: "GeneralizedVLRCNN_New"
+  WEIGHT: "MODEL/glip_tiny_model_o365_goldg_cc_sbu.pth"
+  # WEIGHT: "MODEL/mq-glip-t" # debug
+  RPN_ONLY: True
+  RPN_ARCHITECTURE: "VLDYHEAD"
+
+  BACKBONE:
+    CONV_BODY: "SWINT-FPN-RETINANET"
+    OUT_CHANNELS: 256
+    FREEZE_CONV_BODY_AT: -1
+
+  LANGUAGE_BACKBONE:
+    FREEZE: False
+    TOKENIZER_TYPE: "bert-base-uncased" 
+    MODEL_TYPE: "bert-base-uncased"
+    # TOKENIZER_TYPE: "MODEL/THIRD_PARTIES/bert-base-uncased"
+    # MODEL_TYPE: "MODEL/THIRD_PARTIES/bert-base-uncased"
+    MASK_SPECIAL: False
+
+  ROI_BOX_HEAD:
+    POOLER_RESOLUTION: 7
+    POOLER_SCALES: (0.125, 0.0625, 0.03125, 0.015625, 0.0078125)
+    POOLER_SAMPLING_RATIO: 0
+
+  RPN:
+    USE_FPN: True
+    ANCHOR_SIZES: (64, 128, 256, 512, 1024)
+    ANCHOR_STRIDE: (8, 16, 32, 64, 128)
+    ASPECT_RATIOS: (1.0,)
+    SCALES_PER_OCTAVE: 1
+
+  DYHEAD:
+    CHANNELS: 256
+    NUM_CONVS: 6
+    USE_GN: True
+    USE_DYRELU: True
+    USE_DFCONV: True
+    USE_DYFUSE: True
+    TOPK: 9 # topk for selecting candidate positive samples from each level
+    SCORE_AGG: "MEAN"
+    LOG_SCALE: 0.0
+
+    FUSE_CONFIG:
+      EARLY_FUSE_ON: True
+      TYPE: "MHA-B"
+      USE_CLASSIFICATION_LOSS: False
+      USE_TOKEN_LOSS: False
+      USE_CONTRASTIVE_ALIGN_LOSS: False
+      CONTRASTIVE_HIDDEN_DIM: 64
+      USE_DOT_PRODUCT_TOKEN_LOSS: True
+      USE_FUSED_FEATURES_DOT_PRODUCT: True
+      USE_LAYER_SCALE: True
+      CLAMP_MIN_FOR_UNDERFLOW: True
+      CLAMP_MAX_FOR_OVERFLOW: True
+      CLAMP_BERTATTN_MIN_FOR_UNDERFLOW: True
+      CLAMP_BERTATTN_MAX_FOR_OVERFLOW: True
+      CLAMP_DOT_PRODUCT: True
+           
+    USE_CHECKPOINT: False
+
+TEST:
+  EVAL_TASK: 'detection'
+  DURING_TRAINING: False
+  IMS_PER_BATCH: 8
+
+# use for grounding model
+DATASETS:
+  TRAIN: ("coco_grounding_train_for_obj365", ) # NOTE: modified for customized usage
+  TEST: ("coco_2017_val", )
+  DISABLE_SHUFFLE: False
+  ADD_DET_PROMPT: False
+  RANDOM_SAMPLE_NEG: 85
+  CONTROL_PROB: (0.0, 0.0, 0.5, 0.0)
+
+  SEPARATION_TOKENS: ". "
+
+  EXCLUDE_CROWD: True
+  SPECIAL_SAFEGUARD_FOR_COCO_GROUNDING: True
+
+  # FEW_SHOT: 50 # NOTE: for debug
+
+INPUT:
+  PIXEL_MEAN: [ 103.530, 116.280, 123.675 ]
+  PIXEL_STD: [ 57.375, 57.120, 58.395 ]
+  MIN_SIZE_TRAIN: 800
+  MAX_SIZE_TRAIN: 1333
+  MIN_SIZE_TEST: 800
+  MAX_SIZE_TEST: 1333
+
+AUGMENT:
+  MULT_MIN_SIZE_TRAIN: (480,560,640,720,800)
+
+DATALOADER:
+  SIZE_DIVISIBILITY: 32
+  NUM_WORKERS: 0
+
+
+SOLVER:
+  OPTIMIZER: ADAMW
+  BASE_LR: 0.0001
+  #### should be modified during fine-tuning #######
+  GATE_LR: 0.005
+  QUERY_LR: 0.00001
+  #################################################
+  LANG_LR: 0.00001
+  WEIGHT_DECAY: 0.0001
+  STEPS: (0.95,)
+  MAX_EPOCH: 1 # NOTE: modified for customized usage
+  IMS_PER_BATCH: 16
+  WARMUP_ITERS: 2000
+  WARMUP_FACTOR: 0.001
+  USE_AMP: True
+  MODEL_EMA: 0.999
+  FIND_UNUSED_PARAMETERS: False
+  CHECKPOINT_PERIOD: 99999999
+  CHECKPOINT_PER_EPOCH: 2.0 # NOTE: modified for customized usage
+  TUNING_HIGHLEVEL_OVERRIDE:  "vision_query"
+  MAX_TO_KEEP: 4
+
+
+  CLIP_GRADIENTS:
+    ENABLED: True
+    CLIP_TYPE: "full_model"
+    CLIP_VALUE: 1.0
+    NORM_TYPE: 2.0
+
+VISION_QUERY:
+  ENABLED: True
+  QUERY_BANK_PATH: 'MODEL/coco_query_5000_sel_tiny.pth' # NOTE: modified for customized usage
+  PURE_TEXT_RATE: 0.
+  TEXT_DROPOUT: 0.4
+  VISION_SCALE: 1.0
+  NUM_QUERY_PER_CLASS: 5 # NOTE: vision query number for each category in one forward process, modified for customized usage
+  RANDOM_KSHOT: False
+  ADD_ADAPT_LAYER: False
+  CONDITION_GATE: True
+  NONLINEAR_GATE: True
+  NO_CAT: True
+  MAX_QUERY_NUMBER: 5000 # NOTE: vision query number for each category in the bank, modified for customized usage
+  
