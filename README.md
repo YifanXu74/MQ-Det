@@ -177,6 +177,7 @@ Usually, we set
 python -m torch.distributed.launch --nproc_per_node=8 tools/train_net.py --config-file configs/pretrain/mq-glip-t.yaml --use-tensorboard OUTPUT_DIR 'OUTPUT/MQ-GLIP-TINY/'
 ```
 To conduct pre-training, one should first extract vision queries before start training following the above [instruction](#vision-query-extraction).
+
 To pre-train on custom datasets, please specify ``DATASETS.TRAIN`` and ``VISION_SUPPORT.SUPPORT_BANK_PATH`` in the config file. More details can be found in [CUSTOMIZED_PRETRAIN.md](CUSTOMIZED_PRETRAIN.md).
 
 ## Finetuning-free Evaluation
