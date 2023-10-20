@@ -31,10 +31,12 @@ VISION_QUERY.QUERY_BANK_SAVE_PATH MODEL/coco_query_5000_sel_tiny.pth
 
 Here we can get a new query bank ``MODEL/coco_query_5000_sel_tiny.pth``. Make sure the ``VISION_QUERY.QUERY_BANK_PATH`` in the config file to be this query bank path.
 
-You can specify ``VISION_QUERY.MAX_QUERY_NUMBER`` (number of queries for each category in the bank) to any number to control the bank size.
+You can specify ``VISION_QUERY.MAX_QUERY_NUMBER`` (number of queries for each category in the bank, default 5000) to any number to control the bank size.
 
 
 **4.  Conduct modulated pretraining**
 ```
 python -m torch.distributed.launch --nproc_per_node=8 tools/train_net.py --config-file configs/pretrain/mq-glip-t_coco.yaml --use-tensorboard OUTPUT_DIR 'OUTPUT/MQ-GLIP-TINY-COCO/'
 ```
+
+You can specify ``VISION_QUERY.NUM_QUERY_PER_CLASS`` (default 5) to control the number of vision queries for each category in one forward process during training.
