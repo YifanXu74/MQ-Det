@@ -14,7 +14,7 @@ Here we add a new dataset ``coco_grounding_train_for_obj365``.
 
 **2.  Acquire customized config files**
 
-You can modified upon the [official pretraining config file](configs/pretrain/mq-glip-t.yaml) to get a customized config file. Here we provide an [example](configs/pretrain/mq-glip-t_coco.yaml). You customize your own needs following the "``NOTE``" in the file.
+You can modified upon the [official pretraining config file](configs/pretrain/mq-glip-t.yaml) to get a customized config file. Here we provide an [example](configs/pretrain/mq-glip-t_coco.yaml). You can customize your own needs following the "``NOTE``" in the file.
 
 Make sure to use correct ``DATASETS.TRAIN`` and ``VISION_QUERY.QUERY_BANK_PATH``.
 
