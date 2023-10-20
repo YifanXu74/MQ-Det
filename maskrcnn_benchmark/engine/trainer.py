@@ -106,6 +106,7 @@ def do_train(
         try:
             targets = [target.to(device) for target in targets]
             captions = [t.get_field("caption") for t in targets if "caption" in t.fields()]
+            positive_map = positive_map.to(device)
         except:
             pass
         # Freeze language backbone
