@@ -18,6 +18,20 @@ NeurIPS 2023
 
 MQ-Det is the first multi-modal queried open-world object detector. If you have any questions, please feel free to raise an issue or email <yifan.xu@nlpr.ia.ac.cn>.
 
+## Updates
+
+10/20/2023: Updated an instruction on modulating on customized datasets! Please refer to [CUSTOMIZED_PRETRAIN.md](CUSTOMIZED_PRETRAIN.md).
+
+10/09/2023: Complete code and models are released!
+
+09/22/2023: MQ-Det has beed accepted by NeurIPS 2023 ([Updated Verision](https://arxiv.org/abs/2305.18980)).
+
+05/30/2023: MQ-Det paper on arxiv https://arxiv.org/abs/2305.18980.
+
+05/27/2023: Finetuning-free code and models are released.
+
+05/25/2023: Project page built.
+
 ## Citation
 
 If you find our work useful in your research, please consider citing:
