@@ -55,8 +55,8 @@ MQ-Det incorporates vision queries into existing well-established language-queri
 
 **Features**:
 
-- A plug-and-play gated class-scalable perceiver module upon the frozen detector.
-- A vision conditioned masked language prediction strategy.
+- A plug-and-play gated class-scalable perceiver module upon the frozen detector.  Corresponding code is implemented [here](https://github.com/YifanXu74/MQ-Det/blob/5c4a739a79b04e2ba6bf6a42697bbc6bd3b67e79/maskrcnn_benchmark/modeling/language_backbone/modeling_bert_new.py#L250C2-L250C2).
+- A vision conditioned masked language prediction strategy. Corresponding code is implemented [here](https://github.com/YifanXu74/MQ-Det/blob/5c4a739a79b04e2ba6bf6a42697bbc6bd3b67e79/maskrcnn_benchmark/modeling/detector/generalized_vl_rcnn_new.py#L397-L407).
 - Compatible with most language-queried object detectors.
 
 <!-- ## TODO 
