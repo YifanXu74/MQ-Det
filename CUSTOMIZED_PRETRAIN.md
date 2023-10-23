@@ -26,6 +26,7 @@ Here we use a new config file ``configs/pretrain/mq-glip-t_coco.yaml``.
 python tools/train_net.py \
 --config-file configs/pretrain/mq-glip-t_coco.yaml \
 --extract_query \
+VISION_QUERY.QUERY_BANK_PATH "" \
 VISION_QUERY.QUERY_BANK_SAVE_PATH MODEL/coco_query_5000_sel_tiny.pth
 ```
 
