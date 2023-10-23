@@ -42,7 +42,6 @@ If you find our work useful in your research, please consider citing:
   journal={arXiv preprint arXiv:2305.18980},
   year={2023}
 }
-}
 ```
 
 
