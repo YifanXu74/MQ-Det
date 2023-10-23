@@ -9,6 +9,8 @@ To conduct customized modulating, you can follow these steps.
 
 2. L394: [Add to factory](https://github.com/YifanXu74/MQ-Det/blob/bbacce45f8223d136ceb2be13dd18208cdc9b3db/maskrcnn_benchmark/config/paths_catalog.py#L394)
 
+**NOTE:** make sure to add "_grounding" in dataset name.
+
 Here we add a new dataset ``coco_grounding_train_for_obj365``.
 
 
