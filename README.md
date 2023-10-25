@@ -45,6 +45,8 @@ If you find our work useful in your research, please consider citing:
 ```
 
 
+
+
 ## Multi-modal Queried Object Detection
 We introduce **MQ-Det**, an efficient architecture and pre-training strategy design to utilize both textual description with open-set generalization and visual exemplars with rich description granularity as category queries, namely, **M**ulti-modal **Q**ueried object **Det**ection, for real-world detection with both open-vocabulary categories and various granularity. 
 
