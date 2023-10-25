@@ -256,6 +256,7 @@ If you wish to use custom vision queries, add ``'VISION_QUERY.QUERY_BANK_PATH cu
 
 If set ``VISION_QUERY.QUERY_BANK_PATH`` to ``''``, the model will automatically extract the vision query bank from the (few-shot) training set before fine-tuning.
 
+Note that current code does not support GroundingDINO for few-shot fine-tuning. Please try modulated pre-training and finetuning-free evaluation. 
 
 ## Single-Modal Evaluation
 
