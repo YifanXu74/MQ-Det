@@ -1,4 +1,4 @@
-# Multi-modal Queried Object Detection in the Wild
+<img width="601" alt="image" src="https://github.com/YifanXu74/MQ-Det/assets/54254631/e845239d-7f8a-4752-a862-8238dd64abce"># Multi-modal Queried Object Detection in the Wild
 
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/multi-modal-queried-object-detection-in-the/zero-shot-object-detection-on-lvis-v1-0)](https://paperswithcode.com/sota/zero-shot-object-detection-on-lvis-v1-0?p=multi-modal-queried-object-detection-in-the)
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/multi-modal-queried-object-detection-in-the/zero-shot-object-detection-on-lvis-v1-0-val)](https://paperswithcode.com/sota/zero-shot-object-detection-on-lvis-v1-0-val?p=multi-modal-queried-object-detection-in-the)
@@ -36,7 +36,7 @@ MQ-Det is the first multi-modal queried open-world object detector. If you have 
 
 If you find our work useful in your research, please consider citing:
 ```
-@article{mqdet,
+@article{xu2023multi,
   title={Multi-modal Queried Object Detection in the Wild},
   author={Xu, Yifan and Zhang, Mengdan and Fu, Chaoyou and Chen, Peixian and Yang, Xiaoshan and Li, Ke and Xu, Changsheng},
   journal={arXiv preprint arXiv:2305.18980},
