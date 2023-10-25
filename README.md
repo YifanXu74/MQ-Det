@@ -36,7 +36,7 @@ MQ-Det is the first multi-modal queried open-world object detector. If you have 
 
 If you find our work useful in your research, please consider citing:
 ```
-@article{mqdet,
+@article{xu2023multi,
   title={Multi-modal Queried Object Detection in the Wild},
   author={Xu, Yifan and Zhang, Mengdan and Fu, Chaoyou and Chen, Peixian and Yang, Xiaoshan and Li, Ke and Xu, Changsheng},
   journal={arXiv preprint arXiv:2305.18980},
